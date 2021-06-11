@@ -436,6 +436,28 @@ return n<m;
 }
 
 
+const object1 =(a1,a2) => {
+
+  var object={};
+
+  object.name = a1;
+  object.age  = a2;
+
+  return object;
+}
+
+
+const object2 =(a1,a2) => {
+
+  var object ={};
+
+  object.getName = () => a1;
+  object.getAge = () =>a2;
+
+  return object; 
+}
+
+
 module.exports={
 
 	each,
@@ -462,7 +484,9 @@ module.exports={
   godFunction,
   godFunction2,
   split,
-  before
+  before,
+  object1,
+  object2
 
 
 }
