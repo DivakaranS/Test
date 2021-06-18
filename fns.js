@@ -458,6 +458,289 @@ const object2 =(a1,a2) => {
 }
 
 
+class Person {
+
+  constructor(a,b,c) {
+    
+    this.getname = a;
+    this.getage = b;
+    this.getsex = c;
+
+  }
+
+  getName(){
+
+    return this.getname;
+  }
+  getAge() {
+
+    return this.getage;
+  }
+  getSex () {
+    return this.getsex;
+  }
+
+
+}
+
+class Woman extends Person {
+
+  constructor(a,b,c) {
+
+    super(a,b,c);
+
+    var c='F';
+
+    this.getname = a;
+    this.getage = b;
+    this.getsex = c;
+  }
+
+}
+
+class Man extends Person {
+
+  constructor(a,b,c) {
+
+    super(a,b,c);
+
+    var c='M';
+    this.getname = a;
+    this.getage = b;
+    this.getsex = c;
+
+  } 
+}
+
+
+const uniquee = (array) => {
+
+  // var unique = [...new Set(array)];
+  
+  // return unique;
+
+// var unique = array.filter((item,index)=> array.indexOf(item) === index);
+
+// return unique;
+
+ var unique = array.reduce(function(acc,cur) {
+
+  if(acc.indexOf(cur) === -1){
+
+    acc.push(cur);
+  }
+
+   return acc;
+ },[]);
+
+ return unique;
+
+}
+
+
+const uniqueeBy = (objarr,fn) => {
+
+     let uniqby = objarr.map(obj => fn(obj))
+
+     .map((obj, i, last) => last.indexOf(obj) === i && i)
+
+     .filter(obj => objarr[obj]).map(obj => objarr[obj]);
+
+      return uniqby;
+
+
+}
+
+
+
+const first = (arr) => {
+
+  var result = arr[0];
+
+return result;
+
+
+}
+
+const last = (arr) => {
+
+  var result = arr[arr.length-1];
+
+  return result;
+}
+
+
+const reuse1 =(arr,odd) => {
+
+
+  var result = [];
+
+  arr.map(obj =>{
+
+    var key = Object.keys(obj);
+
+    if(odd(obj[key]) == true){
+
+      result.push(obj[key]);
+    }
+  });
+
+return result;
+
+
+}
+
+const reuse2 = (arr,str,odd) => {
+
+  var output =[];
+
+  arr.map(obj => {
+
+    if(odd(obj[str]) == true){
+
+      output.push(obj[str]);
+
+    }
+ 
+  });
+
+
+return output;
+
+
+}
+
+const reuse3 = (arr,str,odd) => {
+
+     var result =[];
+
+   arr.map(obj => {
+
+    var val = str.reduce(function(obj,key) {
+
+          return obj[key];
+
+    }, obj)
+
+     if(odd(val) == true){
+
+      result.push(val);
+
+     }
+      
+  
+  });
+
+  return result;
+
+}
+
+const reuse4 = (arr,str,odd) => {
+
+       return arr.filter(obj => {
+
+        var val = str.reduce(function(obj,key){
+
+          return obj[key];
+        
+        },obj)
+         
+         if(odd(val)){
+
+          return val;
+         }
+
+
+       })
+
+}
+
+const chain =(arr,funcarr) => {
+
+  var value=arr;
+
+  for(var i=0;i<funcarr.length;i++){
+    
+
+    value = funcarr[i][0](value, funcarr[i][1]);
+  
+  }
+
+return value;
+
+}
+
+const reduce = (arr,con) => {
+
+  var result = arr[0];
+
+  for(var i=1;i < arr.length;i++){
+
+    result = con(result,arr[i]);
+  }
+
+return result;
+
+}
+
+
+
+const anarray = [];
+
+const anumber = 100;
+
+const afunction = () => {};
+
+
+const AND = (a,b) => {
+
+  return a&&b;
+}
+
+const OR = (a,b) => {
+
+  return a||b;
+}
+
+
+const NAND = (a,b) => {
+
+  return !(a&&b);
+}
+
+const NOT = (a) => {
+
+  return !(a);
+}
+
+
+const NOR = (a,b) => {
+
+    return !(a||b);
+
+}
+
+const XOR = (a,b) => {
+
+  if(a == b) {
+
+    return false;
+  }
+  return true;
+
+}
+
+const XNOR = (a,b) => {
+
+  if(a == b) {
+
+    return true;
+  }
+  return false;
+
+}
+
+
 module.exports={
 
 	each,
@@ -486,7 +769,32 @@ module.exports={
   split,
   before,
   object1,
-  object2
+  object2,
+  Person,
+  Woman,
+  Man,
+  uniquee,
+  uniqueeBy,
+  first,
+  last,
+  reuse1,
+  reuse2,
+  reuse3,
+  reuse4,
+  chain,
+  reduce,
+  anarray,
+  anumber,
+  afunction,
+  AND,
+  OR,
+  NAND,
+  NOT,
+  NOR,
+  XOR,
+  XNOR
+  
+
 
 
 }
