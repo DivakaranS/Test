@@ -803,6 +803,59 @@ return{
 
 }
 
+const superfunction5 =(arr) => {
+
+  var idx = -1;
+
+  return function(){
+      
+      idx++;
+
+      return arr[idx];
+
+  }
+
+}
+
+const proxy1 = () => {
+
+  let obj = {};
+
+  var a;
+
+  return Object.defineProperty(obj , 'val',{
+
+    set : (b)=> a = b*2,
+    get : () => a
+  
+  })
+}
+
+const proxy2 = () => {
+
+  let obj ={};
+
+  var a;
+
+  return Object.defineProperty(obj , 'val', {
+
+    set : (b) => a = b*2
+  }),
+ 
+  Object.defineProperty(obj , 'get', {
+
+    get : () => a
+
+  }),
+ 
+  Object.defineProperty(obj , 'reset',{
+
+    get : () => a=undefined
+  
+  })
+
+}
+
 
 module.exports={
 
@@ -858,7 +911,10 @@ module.exports={
   XNOR,
   seek,
   Counter,
-  counter
+  counter,
+  superfunction5,
+  proxy1,
+  proxy2
   
 
 
