@@ -741,6 +741,69 @@ const XNOR = (a,b) => {
 }
 
 
+const seek =(str) => {
+
+  let str1=str[0];
+
+  for(var i=1;i<str.length;i++){
+
+    if(str[i]!=str1){
+      result = str[i];
+      break;
+    }
+
+  }
+
+  return result;
+}
+
+class Counter {
+
+  constructor (){
+    
+    this.value=0;
+
+  } 
+
+  get(){
+   
+   return this.value;
+  }
+
+  inc(){
+  
+   return this.value++;
+  }
+
+}
+
+const counter = () => {
+
+  let value = 0;
+
+  function update(val){
+    value += val;
+
+  } 
+
+return{
+
+  get : function (){
+  
+    return value;
+    
+    },
+
+  inc : function (){
+
+    update(1);
+  }
+
+  }
+
+}
+
+
 module.exports={
 
 	each,
@@ -792,7 +855,10 @@ module.exports={
   NOT,
   NOR,
   XOR,
-  XNOR
+  XNOR,
+  seek,
+  Counter,
+  counter
   
 
 
